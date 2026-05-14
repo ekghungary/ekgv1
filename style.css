@@ -1,0 +1,316 @@
+:root {
+  --bg: #ffffff;
+  --surface: #f5f5f5;
+  --text: #111111;
+  --muted: #5a5a5a;
+  --line: #d9d9d9;
+  --accent: #111111;
+  --accent-inverse: #ffffff;
+  --max: 1180px;
+  --narrow: 760px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+img, svg {
+  max-width: 100%;
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 0.75rem 1rem;
+  z-index: 20;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.narrow,
+.reading-column {
+  max-width: var(--narrow);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.nav-row,
+.footer-row,
+.section-intro,
+.join-layout,
+.contact-layout,
+.hero-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.nav-row {
+  min-height: 72px;
+  align-items: center;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a,
+.footer-row a {
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.footer-row a:hover,
+.button:hover {
+  opacity: 0.72;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.border-top {
+  border-top: 1px solid var(--line);
+}
+
+.eyebrow,
+.section-label,
+.note-label,
+.event-date {
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+h1,
+h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6.4rem);
+  max-width: 10ch;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  max-width: 14ch;
+}
+
+h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.3rem;
+}
+
+.subtitle,
+.section-side-text,
+.reading-column p,
+.event-card p,
+.signup-text,
+.form-note,
+.contact-card p {
+  color: var(--muted);
+  font-size: 1.04rem;
+}
+
+.hero-layout {
+  align-items: flex-end;
+}
+
+.hero-note,
+.event-card,
+.signup-card,
+.contact-card {
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  background: #fff;
+}
+
+.hero-note {
+  max-width: 360px;
+}
+
+.hero-note ul {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.9rem 1.25rem;
+  border: 1px solid var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: var(--accent-inverse);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--text);
+}
+
+.cause-list {
+  margin-top: 1.5rem;
+  padding-left: 1.2rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.join-layout,
+.contact-layout,
+.section-intro {
+  align-items: flex-start;
+}
+
+.signup-card,
+.contact-card {
+  width: min(100%, 420px);
+}
+
+.signup-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.signup-form input {
+  min-height: 48px;
+  border: 1px solid var(--line);
+  padding: 0 0.9rem;
+  font: inherit;
+}
+
+.site-footer {
+  padding: 1.5rem 0 2rem;
+}
+
+.footer-row {
+  align-items: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button,
+a,
+input {
+  transition: 180ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .hero-layout,
+  .section-intro,
+  .join-layout,
+  .contact-layout,
+  .footer-row,
+  .nav-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  h1,
+  h2 {
+    max-width: 100%;
+  }
+}

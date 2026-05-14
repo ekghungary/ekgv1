@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Minimal black and white website template for a cause, movement, or campaign." />
+  <title>Your Cause | Minimal Website Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container nav-row">
+      <a class="brand" href="#top">Your Cause</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#cause">The Cause</a>
+        <a href="#events">Events</a>
+        <a href="#join">Join</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section">
+      <div class="container hero-layout">
+        <div>
+          <p class="eyebrow">Movement · Community · Action</p>
+          <h1>Change starts when people decide not to stay silent.</h1>
+          <p class="subtitle">A minimal website template for a cause, campaign, or values-driven initiative. Replace this text with your actual mission and message.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#join">Join the movement</a>
+            <a class="button button-secondary" href="#cause">Learn more</a>
+          </div>
+        </div>
+        <div class="hero-note">
+          <p class="note-label">Use this space for:</p>
+          <ul>
+            <li>Your one-sentence mission.</li>
+            <li>Your current focus.</li>
+            <li>A key date, place, or campaign goal.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container narrow">
+        <p class="section-label">About</p>
+        <h2>A short explanation of who you are and what this initiative stands for.</h2>
+        <p>This section should stay concise. Explain the purpose in a few sentences so visitors immediately understand the identity of the project.</p>
+      </div>
+    </section>
+
+    <section class="section border-top" id="cause">
+      <div class="container reading-column">
+        <p class="section-label">The cause</p>
+        <h2>A longer section to explain the issue in more depth.</h2>
+        <p>Use this area to describe the background, why this issue matters, what is at stake, and what change you want to create. Keep the structure easy to scan: a few paragraphs, a short list, and one clear takeaway.</p>
+        <p>You can also describe the regional, historical, social, or ethical context here. This part matters because people often support a cause only after they understand both the problem and the direction of the solution.</p>
+        <ul class="cause-list">
+          <li>What problem are you responding to?</li>
+          <li>Who is affected by it?</li>
+          <li>What action do you want supporters to take?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section border-top" id="events">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <p class="section-label">Upcoming events</p>
+            <h2>Show that the cause is alive in the real world.</h2>
+          </div>
+          <p class="section-side-text">Use this section for gatherings, talks, workshops, protests, meetups, or online sessions.</p>
+        </div>
+
+        <div class="events-grid">
+          <article class="event-card">
+            <p class="event-date">20 June 2026</p>
+            <h3>Public discussion evening</h3>
+            <p>Budapest · 18:30</p>
+            <p>A conversation introducing the cause, the current context, and practical ways to participate.</p>
+          </article>
+
+          <article class="event-card">
+            <p class="event-date">4 July 2026</p>
+            <h3>Community workshop</h3>
+            <p>Online · 17:00 CET</p>
+            <p>A collaborative session for volunteers, allies, and people who want to help shape the next steps.</p>
+          </article>
+
+          <article class="event-card">
+            <p class="event-date">18 July 2026</p>
+            <h3>Action day</h3>
+            <p>To be announced</p>
+            <p>Use this slot for a march, local activation, campaign day, cultural event, or fundraiser.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section border-top" id="join">
+      <div class="container join-layout">
+        <div>
+          <p class="section-label">Join and subscribe</p>
+          <h2>Give people one clear next step.</h2>
+          <p>For the first version, use a newsletter signup and one simple call to action. That is often more effective than asking visitors to do too many things at once.</p>
+        </div>
+
+        <div class="signup-card">
+          <p class="signup-title">Stay informed</p>
+          <p class="signup-text">Replace this placeholder with your Beehiiv embed code later, or use another mailing platform.</p>
+
+          <form class="signup-form" onsubmit="return false;">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" type="email" placeholder="Your email address" />
+            <button type="submit" class="button button-primary">Subscribe</button>
+          </form>
+
+          <p class="form-note">Beehiiv supports embeddable subscribe forms that you can place on a website by copying the platform’s embed code into your page. [web:61]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section border-top" id="contact">
+      <div class="container contact-layout">
+        <div>
+          <p class="section-label">Contact</p>
+          <h2>Make it easy for media, partners, and supporters to reach you.</h2>
+        </div>
+        <div class="contact-card">
+          <p><strong>Email</strong><br><a href="mailto:hello@yourcause.org">hello@yourcause.org</a></p>
+          <p><strong>Instagram</strong><br><a href="#">@yourcause</a></p>
+          <p><strong>Press</strong><br><a href="mailto:press@yourcause.org">press@yourcause.org</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer border-top">
+    <div class="container footer-row">
+      <p>© 2026 Your Cause</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
