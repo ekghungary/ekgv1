@@ -1,156 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Minimal black and white website template for a cause, movement, or campaign." />
-  <title>Your Cause | Minimal Website Template</title>
+  <title>EKG — Egészséges Kreatív Gazdaság</title>
+  <meta name="description" content="Az EKG független szakmai szerveződés a hazai egészséges kreatív gazdaság feltételeinek megteremtéséért." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --text-lg: clamp(1.15rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.7rem, 1.2rem + 1.5vw, 2.7rem);
+      --text-2xl: clamp(2.4rem, 1.4rem + 3vw, 4.6rem);
+      --text-hero: clamp(3rem, 1.4rem + 6vw, 6.6rem);
+      --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --black: #050505; --black-panel: #171717; --white: #ffffff; --white-soft: #f4f4f4;
+      --text-dark: #101010; --text-dark-muted: #474747; --text-light: #f7f7f7; --text-light-muted: rgba(255,255,255,0.72);
+      --line-dark: rgba(0,0,0,0.12); --line-light: rgba(255,255,255,0.14);
+      --radius-md: 1rem; --radius-lg: 1.5rem; --content: 1180px; --transition: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; font-family: 'Roboto', Arial, sans-serif; font-size: var(--text-base); line-height: 1.6; background: var(--white); color: var(--text-dark); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; max-width: 75ch; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3 { margin: 0; line-height: 1; }
+    :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    .skip-link { position: absolute; left: var(--space-4); top: -3rem; background: #000; color: #fff; padding: var(--space-3) var(--space-4); z-index: 1000; }
+    .skip-link:focus { top: var(--space-4); }
+    .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-dark); }
+    .header-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
+    .brand img { width: min(300px, 44vw); min-width: 150px; }
+    .nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); flex-wrap: wrap; }
+    .nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dark-muted); transition: color var(--transition); }
+    .nav a:hover, .nav a:focus-visible { color: var(--text-dark); }
+    .section { padding: clamp(var(--space-12), 8vw, var(--space-24)) 0; }
+    .section-dark { background: var(--black); color: var(--text-light); }
+    .section-dark p, .section-dark li { color: var(--text-light-muted); }
+    .section-light { background: var(--white); color: var(--text-dark); }
+    .section-light p, .section-light li { color: var(--text-dark-muted); }
+    .section-soft { background: var(--white-soft); color: var(--text-dark); }
+    .section-soft p, .section-soft li { color: var(--text-dark-muted); }
+    .hero { padding: clamp(var(--space-12), 10vw, 8rem) 0 var(--space-16); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: var(--space-10); align-items: end; }
+    .eyebrow { display: inline-flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-5); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); }
+    .hero h1 { font-size: var(--text-hero); font-weight: 900; letter-spacing: -0.07em; text-transform: uppercase; max-width: 8.5ch; }
+    .hero-copy { display: grid; gap: var(--space-6); }
+    .hero-copy blockquote { margin: 0; padding-left: var(--space-4); border-left: 1px solid var(--line-light); font-size: var(--text-lg); font-weight: 300; color: var(--text-light); max-width: 29ch; }
+    .section-header { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-8); align-items: start; margin-bottom: var(--space-8); }
+    .section-header span { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.14em; padding-top: 0.35rem; opacity: 0.6; }
+    .section-header h2 { font-size: var(--text-2xl); font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .grid-2, .join-grid, .footer-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
+    .card, .join-card, .credit-card { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .card { grid-column: span 6; }
+    .section-dark .card { background: var(--black-panel); border: 1px solid var(--line-light); }
+    .section-light .card, .section-soft .card { background: var(--white); border: 1px solid var(--line-dark); }
+    .card p + p, .credit-card p + p { margin-top: var(--space-4); }
+    .ecosystem-wrap { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--space-8); align-items: start; }
+    .ecosystem-list, .goals, .links-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+    .ecosystem-list li, .goals li, .links-list li { padding: var(--space-4); min-height: 72px; display: flex; align-items: center; border-radius: var(--radius-md); }
+    .section-dark .ecosystem-list li, .section-dark .goals li, .section-dark .links-list li { background: #131313; border: 1px solid var(--line-light); color: var(--text-light); }
+    .section-light .ecosystem-list li, .section-light .goals li, .section-light .links-list li, .section-soft .ecosystem-list li, .section-soft .goals li, .section-soft .links-list li { background: rgba(255,255,255,0.75); border: 1px solid var(--line-dark); color: var(--text-dark); }
+    .links-list a { text-decoration: underline; text-underline-offset: 0.2em; }
+    .links-note { margin-top: var(--space-6); max-width: 60ch; }
+    .section-dark .links-note { color: var(--text-light-muted); }
+    .section-light .links-note, .section-soft .links-note { color: var(--text-dark-muted); }
+    .side-panel { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .section-dark .side-panel { background: #101010; border: 1px solid var(--line-light); }
+    .section-light .side-panel, .section-soft .side-panel { background: #fff; border: 1px solid var(--line-dark); }
+    .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
+    .number-card { padding: var(--space-6); border-top: 1px solid currentColor; }
+    .number-card strong { display: block; margin-bottom: var(--space-2); font-size: clamp(1.9rem, 1rem + 2vw, 3rem); font-weight: 900; letter-spacing: -0.05em; color: inherit; }
+    .section-dark .number-card { color: var(--text-light); }
+    .section-light .number-card, .section-soft .number-card { color: var(--text-dark); }
+    .section-dark .number-card span { color: var(--text-light-muted); }
+    .section-light .number-card span, .section-soft .number-card span { color: var(--text-dark-muted); }
+    .join-card { grid-column: span 8; background: var(--black); color: var(--text-light); border: 1px solid var(--line-light); }
+    .join-card h3 { margin-bottom: var(--space-4); font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; }
+    .join-card p { color: var(--text-light-muted); }
+    .join-button { margin-top: var(--space-6); display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0.9rem 1.3rem; border-radius: 999px; background: #fff; color: #000; font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; transition: transform var(--transition), opacity var(--transition); }
+    .join-button:hover, .join-button:focus-visible { transform: translateY(-2px); opacity: 0.88; }
+    .credit-card { grid-column: span 4; background: #fff; border: 1px solid var(--line-dark); color: var(--text-dark); }
+    .credit-card p { color: var(--text-dark-muted); }
+    footer { background: #fff; color: var(--text-dark); border-top: 1px solid var(--line-dark); padding: var(--space-10) 0 var(--space-16); }
+    .footer-grid { align-items: center; }
+    .footer-brand, .footer-note { grid-column: span 6; }
+    .footer-brand img { width: min(360px, 54vw); }
+    .footer-note { text-align: right; color: var(--text-dark-muted); font-size: var(--text-sm); line-height: 1.7; }
+    .footer-note a { text-decoration: underline; text-underline-offset: 0.2em; }
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 980px) {
+      .hero-grid, .section-header, .ecosystem-wrap { grid-template-columns: 1fr; }
+      .card, .join-card, .credit-card, .footer-brand, .footer-note { grid-column: span 12; }
+      .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav { display: none; }
+      .footer-note { text-align: left; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 1rem), var(--content)); }
+      .grid-2, .join-grid, .footer-grid, .ecosystem-list, .goals, .numbers, .links-list { grid-template-columns: 1fr; }
+      .card, .join-card, .credit-card, .footer-brand, .footer-note { grid-column: auto; }
+      .brand img { width: min(220px, 62vw); }
+      .card, .join-card, .credit-card, .side-panel { padding: var(--space-6); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header" id="top">
-    <div class="container nav-row">
-      <a class="brand" href="#top">Your Cause</a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#cause">The Cause</a>
-        <a href="#events">Events</a>
-        <a href="#join">Join</a>
-        <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="EKG kezdőlap">
+        <img src="./ekg-logo-B.jpg" alt="EKG logó fekete változat" width="831" height="301">
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="#mi-az-ekg">MIT</a>
+        <a href="#miert-most">MIÉRT</a>
+        <a href="#celkituzes">HOGYAN</a>
+        <a href="#kik-alakitjak">KIK</a>
+        <a href="#benchmark">MIHEZ KÉPEST</a>
+        <a href="#csatlakozz">CSATLAKOZZ</a>
+        <a href="#kapcsolodo">MÉG TÖBB</a>
       </nav>
     </div>
   </header>
-
   <main id="main">
-    <section class="hero section">
-      <div class="container hero-layout">
-        <div>
-          <p class="eyebrow">Movement · Community · Action</p>
-          <h1>Change starts when people decide not to stay silent.</h1>
-          <p class="subtitle">A minimal website template for a cause, campaign, or values-driven initiative. Replace this text with your actual mission and message.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#join">Join the movement</a>
-            <a class="button button-secondary" href="#cause">Learn more</a>
+    <section class="section section-dark hero" id="top">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">
+            <span>EKG</span>
+            <span>Egészséges Kreatív Gazdaság</span>
           </div>
+          <h1>Egészséges kreatív gazdaság</h1>
         </div>
-        <div class="hero-note">
-          <p class="note-label">Use this space for:</p>
-          <ul>
-            <li>Your one-sentence mission.</li>
-            <li>Your current focus.</li>
-            <li>A key date, place, or campaign goal.</li>
-          </ul>
+        <div class="hero-copy" data-reveal>
+          <blockquote>"Kreatív országot álmodtam én, ahol mindenki kreatív volt. Kreatív, de nem csak kívül - csontig, velőig kreatív."</blockquote>
+          <p>Magyarország kreatívipari potenciálja nagyobb annál, mint amennyit ma láthatunk.</p>
+          <p>Az EKG kezdeményezése azért jött létre, hogy a hol ide-, hol odarángatott kulturális intézményeknek, kreatív szakembereknek és vállalkozásoknak empatikus, együttműködő, józan ésszel gondolkodó, egészséges és támogató gazdasági és társadalmi környezetet teremtsen és hosszú távon ápoljon.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container narrow">
-        <p class="section-label">About</p>
-        <h2>A short explanation of who you are and what this initiative stands for.</h2>
-        <p>This section should stay concise. Explain the purpose in a few sentences so visitors immediately understand the identity of the project.</p>
-      </div>
-    </section>
-
-    <section class="section border-top" id="cause">
-      <div class="container reading-column">
-        <p class="section-label">The cause</p>
-        <h2>A longer section to explain the issue in more depth.</h2>
-        <p>Use this area to describe the background, why this issue matters, what is at stake, and what change you want to create. Keep the structure easy to scan: a few paragraphs, a short list, and one clear takeaway.</p>
-        <p>You can also describe the regional, historical, social, or ethical context here. This part matters because people often support a cause only after they understand both the problem and the direction of the solution.</p>
-        <ul class="cause-list">
-          <li>What problem are you responding to?</li>
-          <li>Who is affected by it?</li>
-          <li>What action do you want supporters to take?</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section border-top" id="events">
+    <section class="section section-light" id="mi-az-ekg">
       <div class="container">
-        <div class="section-intro">
+        <div class="section-header" data-reveal>
+          <span>01</span>
           <div>
-            <p class="section-label">Upcoming events</p>
-            <h2>Show that the cause is alive in the real world.</h2>
+            <h2>Mi az az EKG?</h2>
+            <p>Egy független szakmai szerveződés azért, hogy tisztán lássuk a hazai kreatívipart, hogy láthatóvá tegyük és összekapcsoljuk a szereplőit, hogy az eddig összegyűjtött tudást megosszuk egymással, hogy támogassuk és segítsük azt, hogy a szó minden értelmében fenntartható legyen hazánkban kreatív munkát végezni.</p>
           </div>
-          <p class="section-side-text">Use this section for gatherings, talks, workshops, protests, meetups, or online sessions.</p>
         </div>
-
-        <div class="events-grid">
-          <article class="event-card">
-            <p class="event-date">20 June 2026</p>
-            <h3>Public discussion evening</h3>
-            <p>Budapest · 18:30</p>
-            <p>A conversation introducing the cause, the current context, and practical ways to participate.</p>
+        <div class="grid-2">
+          <article class="card" data-reveal>
+            <p>A kreatív munka értékteremtő.</p>
+            <p>Társadalmi, kulturális és gazdasági értelemben is.</p>
           </article>
-
-          <article class="event-card">
-            <p class="event-date">4 July 2026</p>
-            <h3>Community workshop</h3>
-            <p>Online · 17:00 CET</p>
-            <p>A collaborative session for volunteers, allies, and people who want to help shape the next steps.</p>
-          </article>
-
-          <article class="event-card">
-            <p class="event-date">18 July 2026</p>
-            <h3>Action day</h3>
-            <p>To be announced</p>
-            <p>Use this slot for a march, local activation, campaign day, cultural event, or fundraiser.</p>
+          <article class="card" data-reveal>
+            <p>Az Európai Unió is a kulturális és kreatív ágazatokat a sokszínűség, a versenyképesség, az innováció és a társadalmi befogás fontos hajtóerejének tekinti.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section border-top" id="join">
-      <div class="container join-layout">
-        <div>
-          <p class="section-label">Join and subscribe</p>
-          <h2>Give people one clear next step.</h2>
-          <p>For the first version, use a newsletter signup and one simple call to action. That is often more effective than asking visitors to do too many things at once.</p>
+    <section class="section section-soft" id="miert-most">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>02</span>
+          <div>
+            <h2>Miért számít, miért most?</h2>
+            <p>Napi szinten készülnek a kreatívipar különböző érdekképviseleteinek és szerveződéseinek whitepaper-jei, felhívásai, független szervezésű adatgyűjtései, hogy az adott területük megkapja azt a figyelmet, kulturális és gazdasági támogatást, amely elegendő a fennmaradáshoz és az újabb tudatos vagy kevésbé tudatos érvágások nélküli folytatáshoz.</p>
+          </div>
         </div>
-
-        <div class="signup-card">
-          <p class="signup-title">Stay informed</p>
-          <p class="signup-text">Replace this placeholder with your Beehiiv embed code later, or use another mailing platform.</p>
-
-          <form class="signup-form" onsubmit="return false;">
-            <label class="sr-only" for="email">Email address</label>
-            <input id="email" type="email" placeholder="Your email address" />
-            <button type="submit" class="button button-primary">Subscribe</button>
-          </form>
-
-          <p class="form-note">Beehiiv supports embeddable subscribe forms that you can place on a website by copying the platform’s embed code into your page. [web:61]</p>
+        <div class="grid-2">
+          <article class="card" data-reveal>
+            <p>Szédítő mélységből indulunk, ugyanis a kulturális és kreatív terület - és elég csak az utóbbi évszázadot nézni - folyamatosságát már az elmélet szintjén is többszörösen megakadályozták, szereplőit és produktumait sokszor megszégyenítették, eredményeit elfelejtettették vagy elherdálták. Mindezek felülírásához talán még a toxikus pozitivizmus is kevés.</p>
+          </article>
+          <article class="card" data-reveal>
+            <p>Ugyanakkor a világgazdasági szinten is kiszámíthatatlan erőviszonyok mellett még indokoltabbá teszik a közös, együttes fellépést és a különböző, de összefonódó érdekek józan összehangolásának képességének alkalmazását.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section border-top" id="contact">
-      <div class="container contact-layout">
-        <div>
-          <p class="section-label">Contact</p>
-          <h2>Make it easy for media, partners, and supporters to reach you.</h2>
+    <section class="section section-light" id="celkituzes">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>03</span>
+          <div>
+            <h2>Elsődleges célkitűzésünk</h2>
+            <p>a hazai egészséges kreatív gazdaság feltételeinek megteremtése:</p>
+          </div>
         </div>
-        <div class="contact-card">
-          <p><strong>Email</strong><br><a href="mailto:hello@yourcause.org">hello@yourcause.org</a></p>
-          <p><strong>Instagram</strong><br><a href="#">@yourcause</a></p>
-          <p><strong>Press</strong><br><a href="mailto:press@yourcause.org">press@yourcause.org</a></p>
+        <ul class="goals" data-reveal>
+          <li>Definíció és állapotfelmérés</li>
+          <li>Független szakmai képviselet felállítása</li>
+          <li>Gazdasági értékteremtés és potenciál szakágankénti ismertetése</li>
+          <li>A kreatívipar átláthatóságának megteremtése és a szereplők láthatóságának növelése</li>
+          <li>Rövid-, közép- és hosszútávú célok meghatározása</li>
+          <li>A kreatív szektor társadalmi és gazdasági hatásai mérésének módszertana, szakmai konszenzuson alapuló KPI-ok meghatározása</li>
+          <li>Támogatási rendszereivel kapcsolatos szakmai állásfoglalás és javaslattétel</li>
+        </ul>
+        <p class="links-note" data-reveal>Tudsz más kezdeményezéséről is? Küldd el nekünk az <a href="mailto:egeszkreativ@gmail.hu">egeszkreativ@gmail.hu</a> e-mail címre és kitesszük a honlapunkra, valamint beletesszük következő hírlevelünkbe.</p>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="kik-alakitjak">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>04</span>
+          <div>
+            <h2>Kik alakítják a kreatívipart?</h2>
+            <p>Több különböző gyakorlat van Európa-szerte, ezek közül az osztrák példát vettük alapul, ugyanis a kreativwirtschaft.at által közölt kutatásokban szereplő kategóriák egyszerűek, érthetőek és konzekvensen jelennek meg az éves tanulmányokban már legalább 15 éve.</p>
+            <p>Ezek alapján a kreatívipari ökoszisztéma területei:</p>
+          </div>
         </div>
+        <div class="ecosystem-wrap">
+          <ul class="ecosystem-list" data-reveal>
+            <li>Építészet</li>
+            <li>Könyv és kiadók</li>
+            <li>Képzőművészet</li>
+            <li>Film és fotó</li>
+            <li>Zeneipar</li>
+            <li>Rádió, televízió és online média</li>
+            <li>Reklám</li>
+            <li>Design</li>
+            <li>Szoftver és játékok</li>
+            <li>Könyvtárak és múzeumok</li>
+          </ul>
+          <aside class="side-panel" data-reveal>
+            <p>A teljes kreatív ökoszisztémával foglalkozunk:</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="benchmark">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>05</span>
+          <div>
+            <h2>Regionális benchmark-ok</h2>
+            <p>A kelet-közép-európai térségben több jól működő példát találhatunk arra, hogy a kreatívipart hogyan lehet jól mérhető gazdasági ágazatként szervezni és a teljes kreatív ökoszisztémát komplexen kezelni és támogatni.</p>
+            <p>Lengyelország, Csehország és Ausztria kapcsolódó adatai megalapozzák azt a feltételezést, hogy Magyarországon a kreatívipar alulbecsült terület (az előző kormány legutóbbi kreatívipari sajtótájékoztatóján hivatkozott adat alapján hazánkban kb. 100.000 embert foglalkoztat a kreatívipar, míg az erre vonatkozó adatok Ausztria esetében 214.611, Lengyelország esetében 281.000, Csehország esetében pedig 225.000 fő), és valószínűleg magasabb hozzáadott GDP értékkel rendelkezik, mint amiről jelenleg megbízható adattal rendelkezünk.</p>
+          </div>
+        </div>
+        <div class="numbers" data-reveal>
+          <div class="number-card"><strong>100.000</strong><span>Magyarország</span></div>
+          <div class="number-card"><strong>214.611</strong><span>Ausztria</span></div>
+          <div class="number-card"><strong>281.000</strong><span>Lengyelország</span></div>
+          <div class="number-card"><strong>225.000</strong><span>Csehország</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="csatlakozz">
+      <div class="container join-grid">
+        <div class="join-card" data-reveal>
+          <h3>Csatlakozz a kezdeményezéshez</h3>
+          <p>Hozzuk létre együtt a hazai egészséges kreatív gazdaságot!</p>
+          <a class="join-button" href="https://forms.gle/QkL3WiAd1xxjb2KH7" target="_blank" rel="noopener noreferrer">Csatlakozom</a>
+        </div>
+        <aside class="credit-card" data-reveal>
+          <p><strong>Koncepció:</strong> Bugár Edina</p>
+          <p><strong>Közreműködők:</strong> Dr Édes Balázs, Göttler Anna, Passa Tamás, Sztana Balázs, Tornyánszki Éva</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="kapcsolodo">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>06</span>
+          <div>
+            <h2>még több kezdeményezés</h2>
+          </div>
+        </div>
+        <ul class="links-list" data-reveal>
+          <li><a href="https://facebook.com/events/s/kibeszelo/1520614209456711/" target="_blank" rel="noopener noreferrer">Kibeszélő</a></li>
+          <li><a href="https://www.filmreform.hu/" target="_blank" rel="noopener noreferrer">Filmreform 2026</a></li>
+          <li><a href="https://filmesvagyok.hu/" target="_blank" rel="noopener noreferrer">Filmes vagyok.</a></li>
+          <li><a href="https://epiteszplatform.hu/" target="_blank" rel="noopener noreferrer">Építész Platform</a></li>
+          <li><a href="https://kreativ.hu/cikk/szakmai-forum-republic-group-fabricius-gabor-maksz-mprsz-ort" target="_blank" rel="noopener noreferrer">Szakmai fórum</a></li>
+          <li><a href="https://kreativ.hu/cikk/szanto-balazs-noguchi-mprsz-kommunikacios-ipar-velemeny-reklam" target="_blank" rel="noopener noreferrer">Kommunikációs ipar</a></li>
+          <li><a href="https://www.fesz.org/dologido" target="_blank" rel="noopener noreferrer">Dologidő</a></li>
+          <li><a href="https://amu.hvg.hu/2026/04/20/kepzomuveszeti-12-pont-es-a-mukritikusok-szakmai-ajanlasa-az-kormany-szamara/" target="_blank" rel="noopener noreferrer">Képzőművészeti 12 pont</a></li>
+          <li><a href="https://www.artmagazin.hu/articles/hir/az_aica_magyar_tagozata_elnoksegenek_allasfoglalasa_a_kortars_kepzomuveszeti_intezmenyrendszer_megujitasarol" target="_blank" rel="noopener noreferrer">AICA Magyar Tagozata</a></li>
+          <li><a href="https://nemma.noblogs.org/files/2012/12/mma-protest1.jpg" target="_blank" rel="noopener noreferrer">MMA protest</a></li>
+        </ul>
+        <p class="links-note" data-reveal>Tudsz más kezdeményezéséről is? Küldd el nekünk az <a href="mailto:egeszkreativ@gmail.hu">egeszkreativ@gmail.hu</a> e-mail címre és kitesszük a honlapunkra, valamint beletesszük következő hírlevelünkbe.</p>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer border-top">
-    <div class="container footer-row">
-      <p>© 2026 Your Cause</p>
-      <a href="#top">Back to top</a>
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="./ekg-logo-B.jpg" alt="EKG logó fekete változat" width="831" height="301">
+      </div>
+      <div class="footer-note">
+        Kapcsolat: <a href="mailto:egeszkreativ@gmail.com">egeszkreativ@gmail.com</a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    (() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
