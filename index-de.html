@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EKG — EKG — Gesunde Kreativwirtschaft</title>
+  <meta name="description" content="Az EKG független szakmai szerveződés a hazai egészséges kreatív gazdaság feltételeinek megteremtéséért." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.9rem, 0.85rem + 0.25vw, 1rem);
+      --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+      --text-lg: clamp(1.15rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.7rem, 1.2rem + 1.5vw, 2.7rem);
+      --text-2xl: clamp(2.4rem, 1.4rem + 3vw, 4.6rem);
+      --text-hero: clamp(3rem, 1.4rem + 6vw, 6.6rem);
+      --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+      --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --black: #050505; --black-panel: #171717; --white: #ffffff; --white-soft: #f4f4f4;
+      --text-dark: #101010; --text-dark-muted: #474747; --text-light: #f7f7f7; --text-light-muted: rgba(255,255,255,0.72);
+      --line-dark: rgba(0,0,0,0.12); --line-light: rgba(255,255,255,0.14);
+      --radius-md: 1rem; --radius-lg: 1.5rem; --content: 1180px; --transition: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; font-family: 'Roboto', Arial, sans-serif; font-size: var(--text-base); line-height: 1.6; background: var(--white); color: var(--text-dark); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; max-width: 75ch; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    h1, h2, h3 { margin: 0; line-height: 1; }
+    :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    .skip-link { position: absolute; left: var(--space-4); top: -3rem; background: #000; color: #fff; padding: var(--space-3) var(--space-4); z-index: 1000; }
+    .skip-link:focus { top: var(--space-4); }
+    .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-dark); }
+    .header-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
+    .brand img { width: min(300px, 44vw); min-width: 150px; }
+    .nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2rem); flex-wrap: wrap; }
+    .nav a { min-height: 44px; display: inline-flex; align-items: center; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dark-muted); transition: color var(--transition); }
+    .nav a:hover, .nav a:focus-visible { color: var(--text-dark); }
+    .section { padding: clamp(var(--space-12), 8vw, var(--space-24)) 0; }
+    .section-dark { background: var(--black); color: var(--text-light); }
+    .section-dark p, .section-dark li { color: var(--text-light-muted); }
+    .section-light { background: var(--white); color: var(--text-dark); }
+    .section-light p, .section-light li { color: var(--text-dark-muted); }
+    .section-soft { background: var(--white-soft); color: var(--text-dark); }
+    .section-soft p, .section-soft li { color: var(--text-dark-muted); }
+    .hero { padding: clamp(var(--space-12), 10vw, 8rem) 0 var(--space-16); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: var(--space-10); align-items: end; }
+    .eyebrow { display: inline-flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-5); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.5); }
+    .hero h1 { font-size: var(--text-hero); font-weight: 900; letter-spacing: -0.07em; text-transform: uppercase; max-width: 8.5ch; }
+    .hero-copy { display: grid; gap: var(--space-6); }
+    .hero-copy blockquote { margin: 0; padding-left: var(--space-4); border-left: 1px solid var(--line-light); font-size: var(--text-lg); font-weight: 300; color: var(--text-light); max-width: 29ch; }
+    .section-header { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-8); align-items: start; margin-bottom: var(--space-8); }
+    .section-header span { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.14em; padding-top: 0.35rem; opacity: 0.6; }
+    .section-header h2 { font-size: var(--text-2xl); font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; margin-bottom: var(--space-4); }
+    .grid-2, .join-grid, .footer-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
+    .card, .join-card, .credit-card { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .card { grid-column: span 6; }
+    .section-dark .card { background: var(--black-panel); border: 1px solid var(--line-light); }
+    .section-light .card, .section-soft .card { background: var(--white); border: 1px solid var(--line-dark); }
+    .card p + p, .credit-card p + p { margin-top: var(--space-4); }
+    .ecosystem-wrap { display: flex; justify-content: center; }
+    .ecosystem-list, .goals, .links-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+    .ecosystem-list li, .goals li, .links-list li { padding: var(--space-4); min-height: 72px; display: flex; align-items: center; border-radius: var(--radius-md); }
+    .section-dark .ecosystem-list li, .section-dark .goals li, .section-dark .links-list li { background: #131313; border: 1px solid var(--line-light); color: var(--text-light); }
+    .section-light .ecosystem-list li, .section-light .goals li, .section-light .links-list li, .section-soft .ecosystem-list li, .section-soft .goals li, .section-soft .links-list li { background: rgba(255,255,255,0.75); border: 1px solid var(--line-dark); color: var(--text-dark); }
+    .links-list a { text-decoration: underline; text-underline-offset: 0.2em; }
+    .links-note { margin-top: var(--space-6); max-width: 60ch; }
+    .section-dark .links-note { color: var(--text-light-muted); }
+    .section-light .links-note, .section-soft .links-note { color: var(--text-dark-muted); }
+    .highlight { font-weight: 500; font-size: var(--text-lg); }
+    .sublede { font-size: var(--text-xl); font-weight: 500; }
+    .side-panel { border-radius: var(--radius-lg); padding: var(--space-8); }
+    .section-dark .side-panel { background: #101010; border: 1px solid var(--line-light); }
+    .section-light .side-panel, .section-soft .side-panel { background: #fff; border: 1px solid var(--line-dark); }
+    .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
+    .number-card { padding: var(--space-6); border-top: 1px solid currentColor; }
+    .number-card strong { display: block; margin-bottom: var(--space-2); font-size: clamp(1.9rem, 1rem + 2vw, 3rem); font-weight: 900; letter-spacing: -0.05em; color: inherit; }
+    .section-dark .number-card { color: var(--text-light); }
+    .section-light .number-card, .section-soft .number-card { color: var(--text-dark); }
+    .section-dark .number-card span { color: var(--text-light-muted); }
+    .section-light .number-card span, .section-soft .number-card span { color: var(--text-dark-muted); }
+    .join-card { grid-column: span 8; background: var(--black); color: var(--text-light); border: 1px solid var(--line-light); }
+    .join-card h3 { margin-bottom: var(--space-4); font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase; }
+    .join-card p { color: var(--text-light-muted); }
+    .join-button { margin-top: var(--space-6); display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0.9rem 1.3rem; border-radius: 999px; background: #fff; color: #000; font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; transition: transform var(--transition), opacity var(--transition); }
+    .join-button:hover, .join-button:focus-visible { transform: translateY(-2px); opacity: 0.88; }
+    .credit-card { grid-column: span 4; background: #fff; border: 1px solid var(--line-dark); color: var(--text-dark); }
+    .credit-card p { color: var(--text-dark-muted); }
+    footer { background: #fff; color: var(--text-dark); border-top: 1px solid var(--line-dark); padding: var(--space-10) 0 var(--space-16); }
+    .footer-grid { align-items: center; }
+    .footer-brand, .footer-note { grid-column: span 6; }
+    .footer-brand img { width: min(360px, 54vw); }
+    .footer-note { text-align: right; color: var(--text-dark-muted); font-size: var(--text-sm); line-height: 1.7; }
+    .footer-note a { text-decoration: underline; text-underline-offset: 0.2em; }
+    [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 980px) {
+      .hero-grid, .section-header, .ecosystem-wrap { grid-template-columns: 1fr; }
+      .card, .join-card, .credit-card, .footer-brand, .footer-note { grid-column: span 12; }
+      .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav { display: none; }
+      .footer-note { text-align: left; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(calc(100% - 1rem), var(--content)); }
+      .grid-2, .join-grid, .footer-grid, .ecosystem-list, .goals, .numbers, .links-list { grid-template-columns: 1fr; }
+      .card, .join-card, .credit-card, .footer-brand, .footer-note { grid-column: auto; }
+      .brand img { width: min(220px, 62vw); }
+      .card, .join-card, .credit-card, .side-panel { padding: var(--space-6); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head><body>
+  <a class="skip-link" href="#main">Ugrás a tartalomra</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="EKG kezdőlap">
+        <img src="./ekg-logo-B.png" alt="EKG logó fekete változat" width="831" height="301">
+      </a>
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="#mi-az-ekg">WAS</a>
+        <a href="#miert-most">WARUM</a>
+        <a href="#celkituzes">WIE</a>
+        <a href="#kik-alakitjak">WER</a>
+        <a href="#benchmark">REGION</a>
+        <a href="#csatlakozz">MITMACHEN</a>
+        <a href="#kapcsolodo">MEHR</a>
+      </nav>
+      <div class="lang-switch"><a href="index.html">HU</a> | <a href="index-en.html">EN</a> | DE</div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section section-dark hero" id="top">
+      <div class="container hero-grid">
+        <div data-reveal>
+          <div class="eyebrow">
+            <span>EKG</span>
+            <span>Egészséges Kreatív Gazdaság</span>
+          </div>
+          <h1>Egészséges kreatív gazdaság</h1>
+        </div>
+        <div class="hero-copy" data-reveal>
+          <blockquote>"Kreatív országot álmodtam én, ahol minden kreatív volt, minden kreatív, de nem csak kívül: csontig, velőig kreatív, kreatív, kreatív, kreatív, kreatív."</blockquote>
+          <p class="highlight">Magyarország kreatívipari potenciálja nagyobb annál, mint amennyit ma láthatunk.</p>
+          <p>Az EKG kezdeményezése azért jött létre, hogy a hol ide-, hol odarángatott kulturális intézményeknek, kreatív szakembereknek és vállalkozásoknak empatikus, együttműködő, józan ésszel gondolkodó, egészséges és támogató gazdasági és társadalmi környezetet teremtsen és hosszú távon ápoljon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="mi-az-ekg">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>01</span>
+          <div>
+            <h2>Was ist EKG?</h2>
+            <p>Az Egészséges Kreatív Gazdaság, vagyis EKG, egy független szakmai szerveződés azért, hogy tisztán lássuk a hazai kreatívipart, hogy láthatóvá tegyük és összekapcsoljuk a szereplőit, hogy az eddig összegyűjtött tudást megosszuk egymással, hogy támogassuk és segítsük azt, hogy a szó minden értelmében fenntartható legyen hazánkban kreatív munkát végezni.</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <article class="card" data-reveal>
+            <p class="highlight">A kreatív munka értékteremtő.<br>Társadalmi, kulturális és gazdasági értelemben is.</p>
+          </article>
+          <article class="card" data-reveal>
+            <p>Az Európai Unió is a kulturális és kreatív ágazatokat a sokszínűség, a versenyképesség, az innováció és a társadalmi befogás fontos hajtóerejének tekinti.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="miert-most">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>02</span>
+          <div>
+            <h2>Warum ist es wichtig, und warum jetzt?</h2>
+            <p>Napi szinten készülnek a kreatívipar különböző érdekképviseleteinek és szerveződéseinek whitepaper-jei, felhívásai, független szervezésű adatgyűjtései, hogy az adott területük megkapja azt a figyelmet, kulturális és gazdasági támogatást, amely elegendő a fennmaradáshoz és az újabb tudatos vagy kevésbé tudatos érvágások nélküli folytatáshoz.</p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <article class="card" data-reveal>
+            <p>Szédítő mélységből indulunk, ugyanis a kulturális és kreatív terület - és elég csak az utóbbi évszázadot nézni - folyamatosságát már az elmélet szintjén is többszörösen megakadályozták, szereplőit és produktumait sokszor megszégyenítették, eredményeit elfelejtettették vagy elherdálták. Mindezek felülírásához talán még a toxikus pozitivizmus is kevés.</p>
+          </article>
+          <article class="card" data-reveal>
+            <p>Ugyanakkor a világgazdasági szinten is kiszámíthatatlan erőviszonyok mellett még indokoltabbá teszik a közös, együttes fellépést és a különböző, de összefonódó érdekek józan összehangolásának képességének alkalmazását.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="celkituzes">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>03</span>
+          <div>
+            <h2>Unser Hauptziel</h2>
+            <p class="sublede">a hazai egészséges kreatív gazdaság feltételeinek megteremtése:</p>
+          </div>
+        </div>
+        <ul class="goals" data-reveal>
+          <li>Definíció és állapotfelmérés</li>
+          <li>Független szakmai képviselet felállítása</li>
+          <li>Gazdasági értékteremtés és potenciál szakágankénti ismertetése</li>
+          <li>A kreatívipar átláthatóságának megteremtése és a szereplők láthatóságának növelése</li>
+          <li>Rövid-, közép- és hosszútávú célok meghatározása</li>
+          <li>A kreatív szektor társadalmi és gazdasági hatásai mérésének módszertana, szakmai konszenzuson alapuló KPI-ok meghatározása</li>
+          <li>Támogatási rendszereivel kapcsolatos szakmai állásfoglalás és javaslattétel</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="kik-alakitjak">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>04</span>
+          <div>
+            <h2>Wer prägt die Kreativwirtschaft?</h2>
+            <p>Több különböző gyakorlat van Európa-szerte, ezek közül az osztrák példát vettük alapul, ugyanis a kreativwirtschaft.at által közölt kutatásokban szereplő kategóriák egyszerűek, érthetőek és konzekvensen jelennek meg az éves tanulmányokban már legalább 15 éve.</p>
+            <p>Ezek alapján a kreatívipari ökoszisztéma területei:</p>
+          </div>
+        </div>
+        <div class="ecosystem-wrap">
+          <ul class="ecosystem-list" data-reveal>
+            <li>Építészet</li>
+            <li>Könyv és kiadók</li>
+            <li>Képzőművészet</li>
+            <li>Film és fotó</li>
+            <li>Zeneipar</li>
+            <li>Rádió, televízió és online média</li>
+            <li>Reklám</li>
+            <li>Design</li>
+            <li>Szoftver és játékok</li>
+            <li>Könyvtárak és múzeumok</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="benchmark">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>05</span>
+          <div>
+            <h2>Regionale Benchmarks</h2>
+            <p>A kelet-közép-európai térségben több jól működő példát találhatunk arra, hogy a kreatívipart hogyan lehet jól mérhető gazdasági ágazatként szervezni és a teljes kreatív ökoszisztémát komplexen kezelni és támogatni.</p>
+            <p>Lengyelország, Csehország és Ausztria kapcsolódó adatai megalapozzák azt a feltételezést, hogy Magyarországon a kreatívipar alulbecsült terület (az előző kormány legutóbbi kreatívipari sajtótájékoztatóján hivatkozott adat alapján hazánkban kb. 100.000 embert foglalkoztat a kreatívipar, míg az erre vonatkozó adatok Ausztria esetében 214.611, Lengyelország esetében 281.000, Csehország esetében pedig 225.000 fő), és valószínűleg magasabb hozzáadott GDP értékkel rendelkezik, mint amiről jelenleg adattal rendelkezünk.</p>
+          </div>
+        </div>
+        <div class="numbers" data-reveal>
+          <div class="number-card"><strong>100.000?</strong><span>Magyarország</span></div>
+          <div class="number-card"><strong>214.611</strong><span>Ausztria</span></div>
+          <div class="number-card"><strong>281.000</strong><span>Lengyelország</span></div>
+          <div class="number-card"><strong>225.000</strong><span>Csehország</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="csatlakozz">
+      <div class="container join-grid">
+        <div class="join-card" data-reveal>
+          <h3>Schließe dich der Initiative an</h3>
+          <p>Hozzuk létre együtt a hazai egészséges kreatív gazdaságot!</p>
+          <a class="join-button" href="https://forms.gle/QkL3WiAd1xxjb2KH7" target="_blank" rel="noopener noreferrer">Csatlakozom</a>
+        </div>
+        <aside class="credit-card" data-reveal>
+          <p><strong>Koncepció:</strong> Bugár Edina</p>
+          <p><strong>Közreműködők:</strong> Dr Édes Balázs, Göttler Anna, Passa Tamás, Sztana Balázs, Tornyánszki Éva</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="kapcsolodo">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span>06</span>
+          <div>
+            <h2>Weitere Initiativen</h2>
+          </div>
+        </div>
+        <ul class="links-list" data-reveal>
+          <li><a href="https://facebook.com/events/s/kibeszelo/1520614209456711/" target="_blank" rel="noopener noreferrer">Kibeszélő</a></li>
+          <li><a href="https://www.filmreform.hu/" target="_blank" rel="noopener noreferrer">Filmreform 2026</a></li>
+          <li><a href="https://atlas.feat.agency/arbevetel" target="_blank" rel="noopener noreferrer">Interaktív ügynökségi treemap</a></li>
+          <li><a href="https://filmesvagyok.hu/" target="_blank" rel="noopener noreferrer">Filmes vagyok.</a></li>
+          <li><a href="https://www.povlokal.com/" target="_blank" rel="noopener noreferrer">Vizuális designszakma</a></li>
+          <li><a href="https://epiteszplatform.hu/" target="_blank" rel="noopener noreferrer">Építész Platform</a></li>
+          <li><a href="https://kreativ.hu/cikk/szakmai-forum-republic-group-fabricius-gabor-maksz-mprsz-ort" target="_blank" rel="noopener noreferrer">Szakmai fórum</a></li>
+          <li><a href="https://kreativ.hu/cikk/szanto-balazs-noguchi-mprsz-kommunikacios-ipar-velemeny-reklam" target="_blank" rel="noopener noreferrer">Kommunikációs ipar</a></li>
+          <li><a href="https://www.fesz.org/dologido" target="_blank" rel="noopener noreferrer">Dologidő</a></li>
+          <li><a href="https://amu.hvg.hu/2026/04/20/kepzomuveszeti-12-pont-es-a-mukritikusok-szakmai-ajanlasa-az-kormany-szamara/" target="_blank" rel="noopener noreferrer">Képzőművészeti 12 pont</a></li>
+          <li><a href="https://www.artmagazin.hu/articles/hir/az_aica_magyar_tagozata_elnoksegenek_allasfoglalasa_a_kortars_kepzomuveszeti_intezmenyrendszer_megujitasarol" target="_blank" rel="noopener noreferrer">AICA Magyar Tagozata</a></li>
+          <li><a href="https://nemma.noblogs.org/files/2012/12/mma-protest1.jpg" target="_blank" rel="noopener noreferrer">MMA protest 2012</a></li>
+        </ul>
+        <p class="links-note" data-reveal>Tudsz más kezdeményezéséről is? Küldd el nekünk az <a href="mailto:egeszkreativ@gmail.hu">egeszkreativ@gmail.com</a> e-mail címre és kitesszük a honlapunkra, valamint beletesszük következő hírlevelünkbe.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="./ekg-logo-B.png" alt="EKG logó fekete változat" width="831" height="301">
+      </div>
+      <div class="footer-note">
+        Kapcsolat: <a href="mailto:egeszkreativ@gmail.com">egeszkreativ@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.16 });
+      document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>
